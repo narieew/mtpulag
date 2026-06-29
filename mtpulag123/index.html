@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mt. Pulag: Above the Clouds Expedition — A comprehensive PE & Health Mountaineering Travelogue Guide covering the Ambangeg Trail, packing, safety, and the Sea of Clouds.">
+  <title>Mt. Pulag: Above the Clouds Expedition | Mountaineering Travelogue Guide</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            summit: '#0f172a',    /* Deep Navy */
+            frost: '#f8fafc',     /* Off White */
+            horizon: '#facc15',   /* Sunrise Gold */
+            pine: '#064e3b',      /* Forest Green */
+          },
+          fontFamily: { 
+            outfit: ['Outfit', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Outfit', sans-serif; background-color: #f8fafc; }
+    .font-serif { font-family: 'Instrument Serif', serif; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .glass { background: rgba(255, 255, 255, 0.72); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); }
+    .nav-glass { background: rgba(248, 250, 252, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(15,23,42,0.08); box-shadow: 0 4px 30px rgba(15,23,42,0.08); }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .timeline-line { height: 100%; width: 2px; background: linear-gradient(to bottom, #facc15, #064e3b, #0f172a); transform-origin: top; transform: scaleY(0); transition: transform 1.2s ease-out; }
+    .timeline-line.visible { transform: scaleY(1); }
+    .timeline-item { opacity: 0; transform: translateX(-16px); transition: all 0.6s ease-out; }
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
+    .hero-slide.active { opacity: 1; }
+
+    .scroll-indicator { animation: bounceDown 2s infinite; }
+    @keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+
+    .masonry { columns: 1; column-gap: 1.5rem; }
+    @media (min-width: 640px) { .masonry { columns: 2; } }
+    @media (min-width: 1024px) { .masonry { columns: 3; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
+
+    .lnt-card { transform: translateY(20px); opacity: 0; transition: all 0.6s ease-out; }
+    .lnt-card.visible { transform: translateY(0); opacity: 1; }
+
+    .fab { transition: transform 0.3s ease, opacity 0.3s ease; }
+    .fab.hidden-fab { opacity: 0; pointer-events: none; transform: translateY(20px); }
+
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    #mobile-menu.open { max-height: 600px; }
+
+    .img-fallback { background: linear-gradient(135deg, #064e3b, #0f172a); }
+  </style>
+</head>
+<body class="text-slate-900 selection:bg-horizon selection:text-summit">
+
+<!-- EXPEDITION LOADER -->
+<div id="loader" class="fixed inset-0 z-[100] bg-summit flex items-center justify-center transition-opacity duration-1000">
+    <div class="text-center text-white">
+        <span class="material-symbols-outlined text-horizon text-6xl animate-bounce">ac_unit</span>
+        <h2 class="text-2xl font-light tracking-[0.5em] uppercase mt-4">Climbing Pulag</h2>
+        <p class="text-white/30 text-xs mt-2 uppercase tracking-widest">Acclimatizing...</p>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-white nav-logo-icon font-bold">landscape</span>
+        <span class="font-extrabold text-xl tracking-tighter uppercase nav-logo-text text-white">PULAG <span class="font-light opacity-70">2928M</span></span>
+      </a>
+
+      <div class="hidden xl:flex items-center gap-6 bg-white/50 backdrop-blur-md px-6 py-3 rounded-full border border-white/50 shadow-sm nav-pill">
+        <a href="#home" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Home</a>
+        <a href="#destination" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Destination</a>
+        <a href="#trail-guide" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Trail Guide</a>
+        <a href="#packing" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Packing</a>
+        <a href="#safety" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Safety</a>
+        <a href="#leave-no-trace" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Leave No Trace</a>
+        <a href="#gallery" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Gallery</a>
+        <a href="#reflection" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">Reflection</a>
+        <a href="#references" class="text-[10px] font-bold uppercase tracking-widest hover:text-horizon transition-colors">References</a>
+      </div>
+
+      <button id="menu-btn" class="xl:hidden w-10 h-10 flex items-center justify-center bg-summit text-white rounded-full" aria-label="Toggle menu" aria-expanded="false">
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="xl:hidden mt-4 rounded-3xl glass overflow-hidden">
+      <div class="flex flex-col p-4 gap-1">
+        <a href="#home" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Home</a>
+        <a href="#destination" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Destination</a>
+        <a href="#trail-guide" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Trail Guide</a>
+        <a href="#packing" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Packing</a>
+        <a href="#safety" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Safety</a>
+        <a href="#leave-no-trace" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Leave No Trace</a>
+        <a href="#gallery" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Gallery</a>
+        <a href="#reflection" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">Reflection</a>
+        <a href="#references" class="mobile-link px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-summit hover:text-white transition-colors">References</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO SECTION -->
+<section id="home" class="relative h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+    <div id="hero-parallax" class="absolute inset-0 z-0">
+        <div class="hero-slide active" data-slide="0">
+            <img src="mtpulag123/peak1.png" alt="Mt. Pulag summit view above the clouds" class="w-full h-full object-cover" loading="eager" onerror="this.onerror=null;this.src='mtpulag123/peak2.png';">
+        </div>
+        <div class="hero-slide" data-slide="1">
+            <img src="mtpulag123/peak2.png" alt="Sea of clouds at Mt. Pulag" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='mtpulag123/peak1.png';">
+        </div>
+        <div class="hero-slide" data-slide="2">
+            <img src="mtpulag123/peak3.png" alt="Golden grasslands near Mt. Pulag summit" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='mtpulag123/peak1.png';">
+        </div>
+        <div class="hero-slide" data-slide="3">
+            <img src="mtpulag123/peak4.png" alt="Ambangeg Trail through Mt. Pulag" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='mtpulag123/peak1.png';">
+        </div>
+        <div class="hero-slide" data-slide="4">
+            <img src="mtpulag123/peak5.png" alt="Sunrise sea of clouds at Mt. Pulag summit" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='mtpulag123/peak1.png';">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-summit/70 via-summit/30 to-pine/90"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-pine/40 via-transparent to-sky-900/20"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <div class="reveal">
+            <p class="text-horizon font-bold tracking-[0.5em] uppercase text-[10px] mb-4 drop-shadow-lg">Welcome &mdash; Mountaineering Travelogue Guide</p>
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-serif italic text-white leading-none mb-3 drop-shadow-2xl">Mt. Pulag</h1>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white/95 tracking-tight mb-6 drop-shadow-xl">Above the Clouds Expedition</h2>
+            <p class="text-white/90 text-base md:text-lg font-light max-w-2xl mx-auto mb-8 leading-relaxed">
+                This travelogue documents my mountaineering journey to Luzon's highest peak &mdash; a comprehensive guide covering the Ambangeg Trail, packing essentials, safety protocols, and the unforgettable Sea of Clouds experience.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 reveal" style="transition-delay: 150ms;">
+            <a href="#destination" class="bg-white text-summit px-8 py-4 rounded-full font-bold text-sm transition-all hover:bg-horizon hover:scale-105 shadow-xl">Explore Destination</a>
+            <a href="#gallery" class="border-2 border-white/60 text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:bg-white/10">View Gallery</a>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 mt-8 text-white/80 text-xs font-bold uppercase tracking-widest reveal" style="transition-delay: 250ms;">
+            <span class="glass px-4 py-2 rounded-full">Name: [Your Name]</span>
+            <span class="glass px-4 py-2 rounded-full">Class: [Your Class]</span>
+            <span class="glass px-4 py-2 rounded-full">Date: June 30, 2026</span>
+        </div>
+    </div>
+
+    <a href="#destination" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors scroll-indicator" aria-label="Scroll to destination">
+        <span class="text-[10px] font-bold uppercase tracking-[0.3em]">Scroll</span>
+        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+    </a>
+
+    <div class="absolute bottom-8 right-8 z-10 flex gap-2" aria-hidden="true">
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors" data-dot="0" aria-label="Slide 1"></button>
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors" data-dot="1" aria-label="Slide 2"></button>
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors" data-dot="2" aria-label="Slide 3"></button>
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors" data-dot="3" aria-label="Slide 4"></button>
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors" data-dot="4" aria-label="Slide 5"></button>
+    </div>
+</section>
+
+<!-- INFO STRIP / QUICK STATS -->
+<section class="bg-summit py-12" aria-label="Mountain statistics">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+            <div class="text-center reveal">
+                <p class="text-3xl md:text-4xl font-black text-horizon counter" data-target="2928">0</p>
+                <p class="text-white/50 text-[10px] uppercase font-bold tracking-widest mt-1">Meters Elevation</p>
+            </div>
+            <div class="text-center reveal" style="transition-delay: 100ms;">
+                <p class="text-3xl md:text-4xl font-black text-horizon"><span class="counter" data-target="3">0</span>/9</p>
+                <p class="text-white/50 text-[10px] uppercase font-bold tracking-widest mt-1">Trail Difficulty</p>
+            </div>
+            <div class="text-center reveal" style="transition-delay: 200ms;">
+                <p class="text-3xl md:text-4xl font-black text-horizon counter" data-target="2">0</p>
+                <p class="text-white/50 text-[10px] uppercase font-bold tracking-widest mt-1">Days / 1 Night</p>
+            </div>
+            <div class="text-center reveal" style="transition-delay: 300ms;">
+                <p class="text-3xl md:text-4xl font-black text-horizon counter" data-target="10">0</p>
+                <p class="text-white/50 text-[10px] uppercase font-bold tracking-widest mt-1">°C (Summit Temp)</p>
+            </div>
+        </div>
+        <blockquote class="text-center max-w-3xl mx-auto reveal">
+            <p class="text-white/80 font-serif italic text-lg md:text-xl leading-relaxed">"They say Mt. Pulag is the Playground of the Gods. Standing above the Sea of Clouds, you understand why."</p>
+        </blockquote>
+    </div>
+</section>
+
+<!-- DESTINATION / STATISTICS -->
+<section id="destination" class="py-32 bg-frost">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-16 items-start">
+            <div class="lg:w-1/2 reveal">
+                <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Destination Overview</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-summit mb-8 leading-tight">The Playground <br>of the Gods</h2>
+                <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <p>
+                        Mt. Pulag (Mount Pulag) is the highest peak in Luzon and the third highest mountain in the Philippines, standing at <strong class="text-summit">2,928 meters above sea level</strong>. Located at the tri-boundary of Benguet, Ifugao, and Nueva Vizcaya in the Cordillera Administrative Region, it is a protected area managed by the DENR and is celebrated as a national park and ASEAN Heritage Park.
+                    </p>
+                    <p>
+                        The mountain is world-renowned for its breathtaking <strong>Sea of Clouds</strong> phenomenon, where layers of clouds blanket the valleys below the summit at sunrise. Its name comes from the Ibaloi word <em>"pulag"</em>, meaning "balding" or "grassy bald summit," referring to its iconic golden dwarf bamboo grasslands.
+                    </p>
+                    <p class="p-6 bg-white rounded-2xl border-l-4 border-horizon italic shadow-sm">
+                        "I chose Mt. Pulag because it represents the pinnacle of Philippine mountaineering. Reaching the summit is not just a physical achievement but a spiritual experience &mdash; walking through mossy forests, crossing grasslands, and witnessing the sunrise above the clouds."
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mt-10">
+                    <div class="p-6 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:bg-pine hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-horizon group-hover:text-horizon mb-2">location_on</span>
+                        <h4 class="text-lg font-black">Kabayan, Benguet</h4>
+                        <p class="text-[10px] uppercase font-bold opacity-50 tracking-widest">Cordillera Region</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:bg-pine hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-horizon mb-2">trending_up</span>
+                        <h4 class="text-lg font-black">2,928m</h4>
+                        <p class="text-[10px] uppercase font-bold opacity-50 tracking-widest">Luzon's Highest</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:bg-pine hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-horizon mb-2">signal_cellular_alt</span>
+                        <h4 class="text-lg font-black">3/9</h4>
+                        <p class="text-[10px] uppercase font-bold opacity-50 tracking-widest">Ambangeg Difficulty</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:bg-pine hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-horizon mb-2">cloud</span>
+                        <h4 class="text-lg font-black">Sea of Clouds</h4>
+                        <p class="text-[10px] uppercase font-bold opacity-50 tracking-widest">Iconic Phenomenon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 w-full space-y-8 reveal" style="transition-delay: 200ms;">
+                <div class="relative rounded-[3rem] overflow-hidden shadow-2xl">
+                    <img src="mtpulag123/peak2.png" alt="Sea of Clouds at Mt. Pulag sunrise" class="w-full aspect-[4/3] object-cover" loading="lazy" onerror="this.onerror=null;this.src='mtpulag123/peak1.png';">
+                    <div class="absolute bottom-6 left-6 right-6 glass p-6 rounded-3xl border border-white/20">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="material-symbols-outlined text-horizon">map</span>
+                            <span class="text-xs font-black uppercase tracking-[0.2em]">Location</span>
+                        </div>
+                        <p class="text-sm font-bold text-summit">Mt. Pulag National Park, Kabayan, Benguet</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100">
+                    <iframe
+                        title="Mt. Pulag National Park on Google Maps"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.5!2d120.898!3d16.587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339179b76a0270bf%3A0x9846865181960ed!2sMount%20Pulag!5e0!3m2!1sen!2sph!4v1719753600000!5m2!1sen!2sph"
+                        class="w-full h-64 border-0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <div class="p-8 bg-pine/5 rounded-3xl border border-pine/10">
+                    <h4 class="font-bold text-summit mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-pine">history_edu</span> Brief History
+                    </h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Mt. Pulag has been sacred to the indigenous Ibaloi, Kalanguya, and Kankana-ey peoples for generations. Declared a national park in 1987 and an ASEAN Heritage Park in 2014, it protects diverse ecosystems from pine forests to mossy forests and grasslands, home to the endangered Philippine eagle and cloud rat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ITINERARY (Vertical Timeline) -->
+<section id="itinerary" class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-20">
+            <div class="reveal">
+                <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Hiking Schedule</span>
+                <h3 class="text-4xl font-extrabold text-summit mb-6">The Ambangeg <br>Expedition Timeline</h3>
+                <p class="text-slate-500 mb-8 leading-relaxed">Mt. Pulag requires careful timing to catch the sunrise above the Sea of Clouds. This schedule follows the standard 2-day, 1-night Ambangeg Trail itinerary &mdash; the most beginner-friendly route to the summit.</p>
+                <div class="inline-flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full text-xs font-bold text-slate-500">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    2 Days / 1 Night &bull; Ambangeg Trail
+                </div>
+            </div>
+
+            <div class="relative pl-10 reveal" id="timeline-container">
+                <div class="absolute left-0 top-0 bottom-0 w-1 timeline-line" id="timeline-line"></div>
+
+                <div class="space-y-10">
+                    <div class="timeline-item relative" data-delay="0">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-pine rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-pine uppercase">Day 1 &bull; 06:00 AM</span>
+                        <h4 class="text-xl font-bold text-summit">Depart Manila / Baguio</h4>
+                        <p class="text-sm text-slate-500">Travel to Baguio City, then proceed to Kabayan, Benguet via van or bus.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="100">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-summit rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-slate-400 uppercase">Day 1 &bull; 10:00 AM</span>
+                        <h4 class="text-xl font-bold text-summit">DENR Registration</h4>
+                        <p class="text-sm text-slate-500">Register at the Mt. Pulag Protected Area Office. Secure guide and briefing.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="200">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-summit rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-slate-400 uppercase">Day 1 &bull; 01:00 PM</span>
+                        <h4 class="text-xl font-bold text-summit">Start Trek &mdash; Ranger Station</h4>
+                        <p class="text-sm text-slate-500">Begin ascent from Ambangeg Ranger Station through pine and mossy forests.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="300">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-summit rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-slate-400 uppercase">Day 1 &bull; 04:00 PM</span>
+                        <h4 class="text-xl font-bold text-summit">Arrive at Camp Site</h4>
+                        <p class="text-sm text-slate-500">Set up camp at designated area. Early dinner and rest before summit push.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="400">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-summit rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-slate-400 uppercase">Day 2 &bull; 01:00 AM</span>
+                        <h4 class="text-xl font-bold text-summit">Wake Up &amp; Prepare</h4>
+                        <p class="text-sm text-slate-500">Early breakfast and layering. Check headlamp and warm gear.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="500">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-summit rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-slate-400 uppercase">Day 2 &bull; 02:30 AM</span>
+                        <h4 class="text-xl font-bold text-summit">Summit Push Begins</h4>
+                        <p class="text-sm text-slate-500">Ascent in darkness through dwarf bamboo slopes. Headlamps mandatory.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="600">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-horizon rounded-full ring-4 ring-white shadow-lg"></div>
+                        <span class="text-xs font-black text-horizon uppercase">Day 2 &bull; 05:30 AM</span>
+                        <h4 class="text-xl font-bold text-summit">Summit &mdash; 2,928m</h4>
+                        <p class="text-sm text-slate-500">Arrive at Peak 3. Witness the legendary Sea of Clouds at sunrise.</p>
+                    </div>
+                    <div class="timeline-item relative" data-delay="700">
+                        <div class="absolute -left-[45px] w-4 h-4 bg-pine rounded-full ring-4 ring-white"></div>
+                        <span class="text-xs font-black text-pine uppercase">Day 2 &bull; 08:00 AM</span>
+                        <h4 class="text-xl font-bold text-summit">Descent &amp; Return</h4>
+                        <p class="text-sm text-slate-500">Descend to camp, break down, and trek back to Ranger Station. Depart for home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WEATHER -->
+<section id="weather" class="py-32 bg-gradient-to-br from-sky-50 to-frost">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Climate Conditions</span>
+            <h3 class="text-4xl font-extrabold text-summit">Weather at Mt. Pulag</h3>
+            <p class="text-slate-500 mt-4 max-w-2xl mx-auto">High-altitude conditions demand proper preparation. Temperatures can drop dramatically, especially before sunrise.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow reveal">
+                <span class="material-symbols-outlined text-sky-500 text-4xl mb-4">ac_unit</span>
+                <h4 class="text-xl font-bold text-summit mb-2">Cold Climate</h4>
+                <p class="text-3xl font-black text-sky-600 mb-2">0&ndash;10&deg;C</p>
+                <p class="text-sm text-slate-500">Summit temperatures regularly drop near freezing. Wind chill makes it feel colder.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow reveal" style="transition-delay: 100ms;">
+                <span class="material-symbols-outlined text-sky-400 text-4xl mb-4">cloud</span>
+                <h4 class="text-xl font-bold text-summit mb-2">Sea of Clouds</h4>
+                <p class="text-sm text-slate-500 mb-2">Best viewed at sunrise (5:00&ndash;6:30 AM) when temperature inversions trap clouds in valleys below.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow reveal" style="transition-delay: 200ms;">
+                <span class="material-symbols-outlined text-horizon text-4xl mb-4">calendar_month</span>
+                <h4 class="text-xl font-bold text-summit mb-2">Best Hiking Months</h4>
+                <p class="text-sm text-slate-500">November to February (dry season) offer clearest skies. Avoid typhoon season (July&ndash;October).</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow reveal" style="transition-delay: 300ms;">
+                <span class="material-symbols-outlined text-slate-500 text-4xl mb-4">air</span>
+                <h4 class="text-xl font-bold text-summit mb-2">Wind Conditions</h4>
+                <p class="text-sm text-slate-500">Strong gusts at the summit and grasslands. Bring a windproof shell jacket and secure loose items.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow reveal" style="transition-delay: 400ms;">
+                <span class="material-symbols-outlined text-blue-500 text-4xl mb-4">rainy</span>
+                <h4 class="text-xl font-bold text-summit mb-2">Rain Preparation</h4>
+                <p class="text-sm text-slate-500">Sudden rain is common. Pack waterproof jacket, rain cover for backpack, and dry bags for electronics and clothes.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow reveal" style="transition-delay: 500ms;">
+                <span class="material-symbols-outlined text-amber-500 text-4xl mb-4">wb_twilight</span>
+                <h4 class="text-xl font-bold text-summit mb-2">Morning Conditions</h4>
+                <p class="text-sm text-slate-500">Pre-dawn treks are coldest and darkest. Layer up, use headlamp, and trek with your guide group.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRAIL GUIDE -->
+<section id="trail-guide" class="py-32 bg-summit text-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Ambangeg Trail</span>
+            <h3 class="text-4xl font-serif italic text-horizon mb-2">Through Three Worlds</h3>
+            <p class="text-white/40 uppercase text-xs tracking-widest">The changing ecosystems of Mt. Pulag</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="space-y-6 reveal">
+                <div class="p-8 bg-white/5 border border-white/10 rounded-3xl">
+                    <h4 class="text-xl font-bold mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-horizon">route</span> Trail Overview</h4>
+                    <ul class="space-y-3 text-white/70 text-sm">
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Starting Point:</strong> Ambangeg Ranger Station, Bokod-Kabayan Road</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Registration:</strong> DENR Protected Area Office (required before trek)</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Checkpoint:</strong> Camp 1 &amp; Camp 2 rest areas along trail</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Camp Site:</strong> Designated camping area before summit push</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Summit:</strong> Peak 3 (2,928m) &mdash; main viewpoint for Sea of Clouds</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Difficulty:</strong> 3/9 (Beginner-friendly)</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Duration:</strong> 4&ndash;5 hours ascent, 2&ndash;3 hours descent</li>
+                        <li class="flex gap-3"><strong class="text-white min-w-[140px]">Terrain:</strong> Well-established dirt trails, gradual inclines, some muddy sections</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reveal" style="transition-delay: 150ms;">
+                <img src="mtpulag123/peak4.png" alt="Ambangeg Trail through Mt. Pulag grasslands" class="w-full h-72 lg:h-full object-cover rounded-[3rem] shadow-2xl" loading="lazy" onerror="this.onerror=null;this.src='mtpulag123/peak3.png';">
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <div class="group p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:bg-white/10 transition-all">
+                <span class="material-symbols-outlined text-horizon text-4xl mb-6">forest</span>
+                <h4 class="text-xl font-bold mb-4">Pine Forest</h4>
+                <p class="text-white/50 text-sm leading-relaxed mb-3">Lower altitudes (1,600&ndash;2,200m) dominated by Benguet pine trees with wide, open trails and cool shade.</p>
+                <p class="text-[10px] uppercase font-bold text-horizon tracking-widest">Vegetation Zone 1</p>
+            </div>
+            <div class="group p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:bg-white/10 transition-all">
+                <span class="material-symbols-outlined text-horizon text-4xl mb-6">spa</span>
+                <h4 class="text-xl font-bold mb-4">Mossy Forest</h4>
+                <p class="text-white/50 text-sm leading-relaxed mb-3">A mystical, foggy world of ferns, lichens, and gnarled trees covered in thick green moss (2,200&ndash;2,600m).</p>
+                <p class="text-[10px] uppercase font-bold text-horizon tracking-widest">Vegetation Zone 2</p>
+            </div>
+            <div class="group p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:bg-white/10 transition-all">
+                <span class="material-symbols-outlined text-horizon text-4xl mb-6">grass</span>
+                <h4 class="text-xl font-bold mb-4">Dwarf Bamboo Slopes</h4>
+                <p class="text-white/50 text-sm leading-relaxed mb-3">Iconic golden grasslands near the summit (2,600&ndash;2,928m) where only the toughest species survive.</p>
+                <p class="text-[10px] uppercase font-bold text-horizon tracking-widest">Vegetation Zone 3</p>
+            </div>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+            <div class="p-6 bg-horizon/10 border border-horizon/20 rounded-2xl text-center">
+                <span class="material-symbols-outlined text-horizon mb-2">photo_camera</span>
+                <p class="text-xs font-bold uppercase tracking-widest">Scenic Viewpoint 1</p>
+                <p class="text-white/50 text-xs mt-1">Camp 2 Rest Area</p>
+            </div>
+            <div class="p-6 bg-horizon/10 border border-horizon/20 rounded-2xl text-center">
+                <span class="material-symbols-outlined text-horizon mb-2">photo_camera</span>
+                <p class="text-xs font-bold uppercase tracking-widest">Scenic Viewpoint 2</p>
+                <p class="text-white/50 text-xs mt-1">Grassland Ridge</p>
+            </div>
+            <div class="p-6 bg-horizon/10 border border-horizon/20 rounded-2xl text-center">
+                <span class="material-symbols-outlined text-horizon mb-2">photo_camera</span>
+                <p class="text-xs font-bold uppercase tracking-widest">Scenic Viewpoint 3</p>
+                <p class="text-white/50 text-xs mt-1">Peak 3 Summit</p>
+            </div>
+            <div class="p-6 bg-horizon/10 border border-horizon/20 rounded-2xl text-center">
+                <span class="material-symbols-outlined text-horizon mb-2">photo_camera</span>
+                <p class="text-xs font-bold uppercase tracking-widest">Scenic Viewpoint 4</p>
+                <p class="text-white/50 text-xs mt-1">Sea of Clouds Deck</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PACKING LIST -->
+<section id="packing" class="py-32 bg-frost">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Essential Gear</span>
+            <h3 class="text-4xl font-extrabold text-summit mb-4">Packing List</h3>
+            <p class="text-slate-500 max-w-2xl mx-auto">Mt. Pulag temperatures can drop to <strong>0&deg;C</strong>. Proper layering and specialized cold-weather gear are essential for a safe and comfortable expedition.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-xl transition-shadow reveal group">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="w-14 h-14 rounded-2xl bg-pine/10 flex items-center justify-center group-hover:bg-pine group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl text-pine group-hover:text-white">backpack</span>
+                    </span>
+                    <div>
+                        <h4 class="text-xl font-bold text-summit">Basic Hiking Gear</h4>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest">Day-to-day essentials</p>
+                    </div>
+                </div>
+                <ul class="space-y-4 text-slate-600 text-sm">
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> Hiking backpack (30&ndash;40L)</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> Headlamp with extra batteries</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> Trekking shoes / hiking boots</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> 2&ndash;3L drinking water</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> High-calorie trail snacks</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> Personal first aid kit</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> Sunscreen &amp; lip balm</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-frost transition-colors"><span class="material-symbols-outlined text-pine text-sm">check_circle</span> Trekking pole (recommended)</li>
+                </ul>
+            </div>
+
+            <div class="p-10 bg-summit text-white rounded-[3rem] shadow-xl relative overflow-hidden reveal group" style="transition-delay: 150ms;">
+                <div class="flex items-center gap-4 mb-8 relative z-10">
+                    <span class="w-14 h-14 rounded-2xl bg-horizon/20 flex items-center justify-center group-hover:bg-horizon group-hover:text-summit transition-colors">
+                        <span class="material-symbols-outlined text-2xl text-horizon group-hover:text-summit">ac_unit</span>
+                    </span>
+                    <div>
+                        <h4 class="text-xl font-bold">Specialized Equipment</h4>
+                        <p class="text-xs text-white/40 uppercase tracking-widest">Cold weather &amp; camping</p>
+                    </div>
+                </div>
+                <ul class="space-y-4 text-white/70 text-sm relative z-10">
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Thermal base layers (moisture-wicking)</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Fleece jacket (mid-layer insulation)</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Windproof / waterproof shell jacket</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Gloves, mittens &amp; bonnet / beanie</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Thick trekking socks (2 pairs)</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Tent, sleeping bag &amp; mat (if camping)</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Emergency thermal blanket</li>
+                    <li class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-horizon text-sm">check_circle</span> Dry bags for clothes &amp; electronics</li>
+                </ul>
+                <span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/5 text-[10rem]">snowshoeing</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SAFETY -->
+<section id="safety" class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-red-50 rounded-[3rem] p-10 md:p-16 relative overflow-hidden reveal">
+            <span class="material-symbols-outlined absolute -right-10 top-0 text-[20rem] text-red-500 opacity-5 pointer-events-none">warning</span>
+            <div class="relative z-10">
+                <span class="text-red-400 font-bold uppercase text-xs tracking-widest mb-2 block">Safety Protocols</span>
+                <h3 class="text-4xl font-extrabold text-red-900 mb-8 flex items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl">emergency_home</span> Safety &amp; Survival
+                </h3>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h5 class="font-bold text-red-700 uppercase text-xs tracking-widest mb-4">Hypothermia &amp; Cold Exposure</h5>
+                        <p class="text-red-900/70 leading-relaxed mb-6">Due to high altitude and wind chill, hypothermia is a serious risk at Mt. Pulag. Watch for shivering, confusion, slurred speech, and loss of coordination. Avoid cotton clothing &mdash; it traps sweat and freezes.</p>
+                        <h5 class="font-bold text-red-700 uppercase text-xs tracking-widest mb-4 mt-8">Weather Reminders</h5>
+                        <ul class="space-y-3 text-sm text-red-900/80">
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-red-500 text-sm">info</span> Check weather forecast before departure</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-red-500 text-sm">info</span> Turn back if conditions become dangerous</li>
+                            <li class="flex gap-3"><span class="material-symbols-outlined text-red-500 text-sm">info</span> Keep a dry set of clothes in sealed dry bags</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-6 bg-white rounded-3xl shadow-sm border border-red-100">
+                            <p class="text-xs font-black text-red-400 uppercase mb-1">Emergency Contacts</p>
+                            <p class="text-lg font-bold text-red-900 mb-1">DENR Mt. Pulag: (074) 442-7765</p>
+                            <p class="text-lg font-bold text-red-900 mb-1">Kabayan MDRRMO: 0927-XXX-XXXX</p>
+                            <p class="text-lg font-bold text-red-900">Philippine Red Cross: 143</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-4 bg-white rounded-2xl border border-red-100 text-xs font-bold text-red-700 flex items-center gap-2"><span class="material-symbols-outlined text-sm">assignment</span> Register at DENR</div>
+                            <div class="p-4 bg-white rounded-2xl border border-red-100 text-xs font-bold text-red-700 flex items-center gap-2"><span class="material-symbols-outlined text-sm">groups</span> Guide Required</div>
+                            <div class="p-4 bg-white rounded-2xl border border-red-100 text-xs font-bold text-red-700 flex items-center gap-2"><span class="material-symbols-outlined text-sm">route</span> Stay on Trail</div>
+                            <div class="p-4 bg-white rounded-2xl border border-red-100 text-xs font-bold text-red-700 flex items-center gap-2"><span class="material-symbols-outlined text-sm">medical_services</span> No Medical, No Hike</div>
+                        </div>
+                        <div class="p-6 bg-white rounded-3xl border border-red-100">
+                            <p class="text-xs font-black text-red-400 uppercase mb-3">First Aid Checklist</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-red-50 px-3 py-1 rounded-full text-xs text-red-800">Bandages</span>
+                                <span class="bg-red-50 px-3 py-1 rounded-full text-xs text-red-800">Antiseptic</span>
+                                <span class="bg-red-50 px-3 py-1 rounded-full text-xs text-red-800">Pain Relievers</span>
+                                <span class="bg-red-50 px-3 py-1 rounded-full text-xs text-red-800">Blister Plasters</span>
+                                <span class="bg-red-50 px-3 py-1 rounded-full text-xs text-red-800">Oral Rehydration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LEAVE NO TRACE -->
+<section class="py-32 bg-summit text-white">
+    <div id="leave-no-trace" class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+            <h3 class="text-4xl font-extrabold text-white mb-4">Protecting the Playground</h3>
+            <p class="text-horizon uppercase text-xs font-black tracking-[0.4em]">The 7 Principles of Leave No Trace</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 reveal">
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="0">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">event_note</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">01</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Plan Ahead &amp; Prepare</p>
+            </div>
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="1">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">hiking</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">02</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Travel on Durable Surfaces</p>
+            </div>
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="2">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">delete</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">03</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Dispose Waste Properly</p>
+            </div>
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="3">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">eco</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">04</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Leave What You Find</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto reveal">
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="4">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">local_fire_department</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">05</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Minimize Campfire Impact</p>
+            </div>
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="5">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">pets</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">06</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Respect Wildlife</p>
+            </div>
+            <div class="lnt-card p-8 bg-white/5 border border-white/10 rounded-3xl text-center hover:bg-horizon hover:text-summit transition-all cursor-default" data-lnt="6">
+                <span class="material-symbols-outlined text-horizon text-3xl mb-3">groups</span>
+                <h5 class="text-3xl font-black mb-2 opacity-20">07</h5>
+                <p class="font-bold uppercase text-[10px] tracking-widest">Respect Other Visitors</p>
+            </div>
+        </div>
+
+        <div class="mt-12 p-10 bg-white/5 rounded-[3rem] border border-white/10 reveal">
+            <h5 class="text-xl font-bold mb-6 flex items-center gap-4">
+                <span class="material-symbols-outlined text-horizon">forest</span> My Environmental Pledge
+            </h5>
+            <div class="flex flex-wrap gap-4">
+                <span class="bg-white/10 px-6 py-3 rounded-full text-xs font-bold uppercase hover:bg-horizon hover:text-summit transition-colors">Carry All Trash Out</span>
+                <span class="bg-white/10 px-6 py-3 rounded-full text-xs font-bold uppercase hover:bg-horizon hover:text-summit transition-colors">Respect Wildlife</span>
+                <span class="bg-white/10 px-6 py-3 rounded-full text-xs font-bold uppercase hover:bg-horizon hover:text-summit transition-colors">Protect Plants &amp; Flora</span>
+                <span class="bg-white/10 px-6 py-3 rounded-full text-xs font-bold uppercase hover:bg-horizon hover:text-summit transition-colors">Stay on Designated Trails</span>
+                <span class="bg-white/10 px-6 py-3 rounded-full text-xs font-bold uppercase hover:bg-horizon hover:text-summit transition-colors">No Loud Noises</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery" class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Expedition Photos</span>
+            <h3 class="text-4xl font-extrabold text-summit mb-4">Photo Gallery</h3>
+            <p class="text-slate-500 max-w-2xl mx-auto">Real photographs from my Mt. Pulag expedition. Click any image to view in full size.</p>
+        </div>
+
+        <div class="masonry reveal" id="gallery-grid">
+            <div class="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer" onclick="openLightbox(0)" role="button" tabindex="0" aria-label="View summit photo">
+                <img src="mtpulag123/peak1.png" alt="Mt. Pulag summit above the clouds" class="w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" onerror="handleImgError(this)">
+                <div class="absolute inset-0 bg-summit/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6">
+                    <span class="material-symbols-outlined text-white text-4xl mb-2">zoom_in</span>
+                    <p class="text-white text-sm font-bold text-center">Summit View</p>
+                </div>
+            </div>
+            <div class="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer" onclick="openLightbox(1)" role="button" tabindex="0" aria-label="View sea of clouds photo">
+                <img src="mtpulag123/peak2.png" alt="Sea of clouds at sunrise" class="w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" onerror="handleImgError(this)">
+                <div class="absolute inset-0 bg-summit/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6">
+                    <span class="material-symbols-outlined text-white text-4xl mb-2">zoom_in</span>
+                    <p class="text-white text-sm font-bold text-center">Sea of Clouds</p>
+                </div>
+            </div>
+            <div class="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer" onclick="openLightbox(2)" role="button" tabindex="0" aria-label="View grasslands photo">
+                <img src="mtpulag123/peak3.png" alt="Golden grasslands near summit" class="w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" onerror="handleImgError(this)">
+                <div class="absolute inset-0 bg-summit/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6">
+                    <span class="material-symbols-outlined text-white text-4xl mb-2">zoom_in</span>
+                    <p class="text-white text-sm font-bold text-center">Golden Grasslands</p>
+                </div>
+            </div>
+            <div class="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer" onclick="openLightbox(3)" role="button" tabindex="0" aria-label="View trail photo">
+                <img src="mtpulag123/peak4.png" alt="Ambangeg Trail path" class="w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" onerror="handleImgError(this)">
+                <div class="absolute inset-0 bg-summit/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6">
+                    <span class="material-symbols-outlined text-white text-4xl mb-2">zoom_in</span>
+                    <p class="text-white text-sm font-bold text-center">Ambangeg Trail</p>
+                </div>
+            </div>
+            <div class="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer" onclick="openLightbox(4)" role="button" tabindex="0" aria-label="View sunrise photo">
+                <img src="mtpulag123/peak5.png" alt="Sunrise above the sea of clouds" class="w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" onerror="handleImgError(this)">
+                <div class="absolute inset-0 bg-summit/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6">
+                    <span class="material-symbols-outlined text-white text-4xl mb-2">zoom_in</span>
+                    <p class="text-white text-sm font-bold text-center">Sunrise Summit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection" class="py-32 bg-frost">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl reveal">
+            <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-4 block text-center">Personal Journal</span>
+            <h3 class="text-summit font-black uppercase tracking-tighter text-3xl md:text-4xl mb-10 text-center underline decoration-horizon underline-offset-8">Traveler's Reflection</h3>
+            <p class="text-lg md:text-xl text-slate-700 font-light italic leading-relaxed mb-12 text-center">
+                "Reaching Mt. Pulag reminded me that the greatest adventures are not always about conquering difficult terrain &mdash; they are about patience, discipline, and deep appreciation for nature. Standing above the Sea of Clouds at 2,928 meters, I felt humbled by the beauty of the Cordilleras and grateful for every step that brought me there."
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-8">
+                <div class="p-6 bg-frost rounded-2xl space-y-2">
+                    <h6 class="text-[10px] font-black uppercase text-horizon tracking-widest">Physical Challenges</h6>
+                    <p class="text-sm text-slate-600 leading-relaxed">Managing thin air, steep inclines, and freezing temperatures at the summit required mental toughness, steady pacing, and proper layering to avoid exhaustion and hypothermia.</p>
+                </div>
+                <div class="p-6 bg-frost rounded-2xl space-y-2">
+                    <h6 class="text-[10px] font-black uppercase text-horizon tracking-widest">Mental Challenges</h6>
+                    <p class="text-sm text-slate-600 leading-relaxed">Overcoming sleep deprivation during the 2:30 AM summit push was the hardest part. Pushing through darkness and cold demanded focus, teamwork, and trust in our guide.</p>
+                </div>
+                <div class="p-6 bg-frost rounded-2xl space-y-2">
+                    <h6 class="text-[10px] font-black uppercase text-horizon tracking-widest">Lessons Learned</h6>
+                    <p class="text-sm text-slate-600 leading-relaxed">I learned that protecting mountains is everyone's responsibility. Leave No Trace is not optional &mdash; it ensures future generations can experience the same breathtaking beauty we did.</p>
+                </div>
+                <div class="p-6 bg-frost rounded-2xl space-y-2">
+                    <h6 class="text-[10px] font-black uppercase text-horizon tracking-widest">Favorite Moment</h6>
+                    <p class="text-sm text-slate-600 leading-relaxed">Watching the first golden rays of sunlight illuminate the endless Sea of Clouds from Luzon's highest peak. In that moment, every early wake-up and every cold step felt completely worth it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references" class="py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-6 reveal">
+        <div class="text-center mb-12">
+            <span class="text-horizon font-bold uppercase text-xs tracking-widest mb-2 block">Sources</span>
+            <h4 class="text-2xl font-extrabold text-summit">References (APA 7)</h4>
+        </div>
+        <div class="space-y-6 text-slate-600 text-sm leading-relaxed bg-frost p-10 rounded-3xl border border-slate-100">
+            <p>Department of Tourism &ndash; Cordillera Administrative Region. (n.d.). <em>Cordillera tourism destinations</em>. Department of Tourism Philippines. Retrieved June 30, 2026, from https://www.visitmycordillera.com</p>
+            <p>Department of Environment and Natural Resources. (n.d.). <em>Mt. Pulag National Park hiking information</em>. Protected Area Management Office. Retrieved June 30, 2026, from https://www.denr.gov.ph</p>
+            <p>Google. (n.d.). <em>Mt. Pulag National Park, Kabayan, Benguet</em> [Map]. Google Maps. Retrieved June 30, 2026, from https://maps.google.com/?q=Mt+Pulag+National+Park</p>
+            <p>Leave No Trace Center for Outdoor Ethics. (n.d.). <em>The seven principles of Leave No Trace</em>. Retrieved June 30, 2026, from https://lnt.org/why/7-principles/</p>
+            <p>Philippine Statistics Authority. (2023). <em>Protected areas of the Philippines</em>. Retrieved June 30, 2026, from https://www.psa.gov.ph</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-summit py-16 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-10 mb-10">
+            <div class="text-center md:text-left">
+                <h4 class="text-2xl font-black uppercase tracking-tighter mb-2">MT. PULAG <span class="text-horizon">2928M</span></h4>
+                <p class="text-white/30 text-[10px] font-bold uppercase tracking-[0.4em]">Above the Clouds Expedition &bull; PE &amp; Health &bull; 2026</p>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-horizon hover:text-summit transition-colors" aria-label="Facebook">
+                    <span class="material-symbols-outlined text-lg">public</span>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-horizon hover:text-summit transition-colors" aria-label="Instagram">
+                    <span class="material-symbols-outlined text-lg">photo_camera</span>
+                </a>
+                <a href="https://maps.google.com/?q=Mt+Pulag+National+Park" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-horizon hover:text-summit transition-colors" aria-label="Google Maps">
+                    <span class="material-symbols-outlined text-lg">map</span>
+                </a>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-white/30 text-xs">&copy; 2026 Mt. Pulag Mountaineering Travelogue. All rights reserved.</p>
+            <button onclick="scrollToTop()" class="text-xs font-bold uppercase tracking-widest text-horizon hover:text-white transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">keyboard_arrow_up</span> Back to Top
+            </button>
+        </div>
+    </div>
+</footer>
+
+<!-- FLOATING ACTION BUTTON -->
+<button id="fab" onclick="scrollToTop()" class="fab hidden-fab fixed bottom-8 right-8 z-40 w-14 h-14 bg-horizon text-summit rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform" aria-label="Back to top">
+    <span class="material-symbols-outlined">keyboard_arrow_up</span>
+</button>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="fixed inset-0 z-[100] bg-summit/98 hidden opacity-0 transition-opacity duration-500 items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-horizon transition-colors z-10" aria-label="Close lightbox">
+        <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <button onclick="prevLightbox()" class="absolute left-4 md:left-8 text-white hover:text-horizon transition-colors z-10" aria-label="Previous image">
+        <span class="material-symbols-outlined text-4xl">chevron_left</span>
+    </button>
+    <button onclick="nextLightbox()" class="absolute right-4 md:right-8 text-white hover:text-horizon transition-colors z-10" aria-label="Next image">
+        <span class="material-symbols-outlined text-4xl">chevron_right</span>
+    </button>
+    <div class="max-w-6xl w-full text-center">
+        <img id="lightbox-img" src="" class="w-full h-auto max-h-[75vh] object-contain rounded-3xl mx-auto" alt="Gallery preview">
+        <p id="lightbox-caption" class="text-white/70 text-sm mt-4 font-bold uppercase tracking-widest"></p>
+    </div>
+</div>
+
+<script>
+    // Image fallback helper
+    const FALLBACK_IMG = 'mtpulag123/peak1.png';
+    function handleImgError(img) {
+        if (img.src.indexOf(FALLBACK_IMG) === -1) {
+            img.onerror = null;
+            img.src = FALLBACK_IMG;
+            img.classList.add('img-fallback');
+        }
+    }
+
+    // LOADER
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 1000);
+        }, 1500);
+    });
+
+    // NAVBAR scroll effect
+    const navbar = document.getElementById('navbar');
+    const navLogoIcon = document.querySelector('.nav-logo-icon');
+    const navLogoText = document.querySelector('.nav-logo-text');
+    const navPill = document.querySelector('.nav-pill');
+
+    function updateNavbar() {
+        const scrolled = window.scrollY > 80;
+        if (scrolled) {
+            navbar.classList.add('nav-glass', 'py-4');
+            navbar.classList.remove('py-6');
+            navLogoIcon?.classList.remove('text-white');
+            navLogoIcon?.classList.add('text-pine');
+            navLogoText?.classList.remove('text-white');
+            navLogoText?.classList.add('text-summit');
+        } else {
+            navbar.classList.remove('nav-glass', 'py-4');
+            navbar.classList.add('py-6');
+            navLogoIcon?.classList.remove('text-pine');
+            navLogoIcon?.classList.add('text-white');
+            navLogoText?.classList.remove('text-summit');
+            navLogoText?.classList.add('text-white');
+        }
+    }
+    window.addEventListener('scroll', updateNavbar);
+    updateNavbar();
+
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+        menuIcon.textContent = isOpen ? 'close' : 'menu';
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuIcon.textContent = 'menu';
+        });
+    });
+
+    // SCROLL REVEAL
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // TIMELINE ANIMATION
+    const timelineContainer = document.getElementById('timeline-container');
+    const timelineLine = document.getElementById('timeline-line');
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                timelineLine?.classList.add('visible');
+                entry.target.querySelectorAll('.timeline-item').forEach((item, i) => {
+                    setTimeout(() => item.classList.add('visible'), parseInt(item.dataset.delay || 0));
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    if (timelineContainer) timelineObserver.observe(timelineContainer);
+
+    // LNT CARDS ANIMATION
+    const lntObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.lnt-card').forEach((card, i) => {
+                    setTimeout(() => card.classList.add('visible'), i * 100);
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    const lntSection = document.getElementById('leave-no-trace');
+    if (lntSection) lntObserver.observe(lntSection);
+
+    // ANIMATED COUNTERS
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.counter').forEach(counter => {
+                    const target = parseInt(counter.dataset.target);
+                    const duration = 2000;
+                    const start = performance.now();
+                    function animate(now) {
+                        const progress = Math.min((now - start) / duration, 1);
+                        counter.textContent = Math.floor(progress * target);
+                        if (progress < 1) requestAnimationFrame(animate);
+                        else counter.textContent = target;
+                    }
+                    requestAnimationFrame(animate);
+                });
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    const observedSections = new Set();
+    document.querySelectorAll('.counter').forEach(c => {
+        const section = c.closest('section');
+        if (section && !observedSections.has(section)) {
+            observedSections.add(section);
+            counterObserver.observe(section);
+        }
+    });
+
+    // HERO SLIDESHOW
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+
+    function goToSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('bg-white'));
+        dots.forEach(d => d.classList.add('bg-white/40'));
+        currentSlide = index;
+        slides[currentSlide]?.classList.add('active');
+        dots[currentSlide]?.classList.remove('bg-white/40');
+        dots[currentSlide]?.classList.add('bg-white');
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.dot)));
+    });
+
+    if (slides.length > 0) {
+        goToSlide(0);
+        setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
+    }
+
+    // PARALLAX
+    const heroParallax = document.getElementById('hero-parallax');
+    window.addEventListener('scroll', () => {
+        if (heroParallax && window.scrollY < window.innerHeight) {
+            heroParallax.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+        }
+    });
+
+    // FAB
+    const fab = document.getElementById('fab');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) fab?.classList.remove('hidden-fab');
+        else fab?.classList.add('hidden-fab');
+    });
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // LIGHTBOX
+    const gallery = [
+        { src: 'mtpulag123/peak1.png', caption: 'Summit View — Mt. Pulag' },
+        { src: 'mtpulag123/peak2.png', caption: 'Sea of Clouds at Sunrise' },
+        { src: 'mtpulag123/peak3.png', caption: 'Golden Grasslands' },
+        { src: 'mtpulag123/peak4.png', caption: 'Ambangeg Trail' },
+        { src: 'mtpulag123/peak5.png', caption: 'Sunrise Summit — Sea of Clouds' }
+    ];
+    let currentLightbox = 0;
+
+    function openLightbox(i) {
+        currentLightbox = i;
+        updateLightbox();
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('hidden');
+        setTimeout(() => lb.classList.add('opacity-100', 'flex'), 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightbox() {
+        const item = gallery[currentLightbox];
+        const img = document.getElementById('lightbox-img');
+        img.src = item.src;
+        img.alt = item.caption;
+        img.onerror = function() { handleImgError(this); };
+        document.getElementById('lightbox-caption').textContent = item.caption;
+    }
+
+    function closeLightbox() {
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('opacity-100');
+        setTimeout(() => {
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+            document.body.style.overflow = '';
+        }, 500);
+    }
+
+    function nextLightbox() {
+        currentLightbox = (currentLightbox + 1) % gallery.length;
+        updateLightbox();
+    }
+
+    function prevLightbox() {
+        currentLightbox = (currentLightbox - 1 + gallery.length) % gallery.length;
+        updateLightbox();
+    }
+
+    document.addEventListener('keydown', (e) => {
+        const lb = document.getElementById('lightbox');
+        if (lb.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+        if (e.key === 'ArrowLeft') prevLightbox();
+    });
+
+    document.getElementById('lightbox')?.addEventListener('click', (e) => {
+        if (e.target.id === 'lightbox') closeLightbox();
+    });
+
+    // Gallery keyboard accessibility
+    document.querySelectorAll('#gallery-grid [role="button"]').forEach((el, i) => {
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox(i);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
